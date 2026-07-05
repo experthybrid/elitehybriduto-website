@@ -3,100 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Hybrid Auto | Toyota Hybrid Specialists</title>
-  <meta name="description" content="Elite Hybrid Auto specializes in Toyota hybrid diagnostics, hybrid battery repair, ABS modules, electrical diagnostics, and mobile service by appointment." />
+  <title>Elite Hybrid Auto | Toyota & Lexus Hybrid Specialists</title>
+  <meta name="description" content="Elite Hybrid Auto specializes in Toyota and Lexus hybrid diagnostics, hybrid battery service, ABS/brake systems, engine/head gasket repair, and general maintenance in Spring Valley and San Diego." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#home"><span>ELITE</span> HYBRID AUTO</a>
-    <nav>
+    <a class="logo" href="#home" aria-label="Elite Hybrid Auto home">
+      <span class="logo-mark">⚡</span>
+      <span class="logo-text"><strong>ELITE</strong><em>HYBRID AUTO</em><small>TOYOTA & LEXUS HYBRID SPECIALISTS</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+    <nav class="site-nav">
+      <a href="#home">Home</a>
       <a href="#services">Services</a>
+      <a href="#why">Why Elite</a>
       <a href="#reviews">Reviews</a>
-      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="header-call" href="tel:16197868777">Call Now</a>
+    <a class="header-call" href="tel:16197868777">☎ (619) 786-8777</a>
   </header>
 
   <main>
     <section id="home" class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="eyebrow">Mobile Service by Appointment</p>
-        <h1>Toyota Hybrid Specialists</h1>
-        <p class="hero-subtitle">Dealer-level hybrid diagnostics, battery repair, ABS modules, and maintenance with honest communication.</p>
+      <div class="hero-copy">
+        <p class="eyebrow">Toyota & Lexus Hybrid Specialists</p>
+        <h1>Hybrid repairs done right the first time.</h1>
+        <p class="hero-subtitle">Dealer-level diagnostics, honest repairs, fair pricing, and Toyota hybrid experience trusted by San Diego drivers.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#appointment">Request Service</a>
-          <a class="btn secondary" href="tel:16197868777">Call (619) 786-8777</a>
+          <a class="btn primary" href="#appointment">Schedule Appointment</a>
+          <a class="btn secondary" href="tel:16197868777">Call Now</a>
+        </div>
+        <div class="mini-trust">
+          <span>🔎 Expert Diagnostics</span>
+          <span>🛡 Honest & Transparent</span>
+          <span>⏱ Fast Turnaround</span>
+          <span>✅ Quality You Can Trust</span>
         </div>
       </div>
-      <div class="hero-card">
-        <strong>Specializing In</strong>
-        <span>Prius • Camry Hybrid • RAV4 Hybrid • Highlander Hybrid</span>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 760 360" role="img">
+          <defs>
+            <linearGradient id="carGlow" x1="0" x2="1">
+              <stop stop-color="#8ec5ff"/>
+              <stop offset="1" stop-color="#0b6dff"/>
+            </linearGradient>
+          </defs>
+          <path class="car-shadow" d="M101 265 C180 310 560 310 670 266" />
+          <path class="car-line main" d="M68 230 C102 182 165 144 254 126 C328 70 494 78 600 137 C657 148 700 177 725 221" />
+          <path class="car-line" d="M251 127 C319 126 433 126 575 137" />
+          <path class="car-line" d="M320 124 C353 93 445 92 505 124" />
+          <path class="car-line" d="M133 222 C190 207 255 202 323 205" />
+          <path class="car-line" d="M500 204 C553 193 616 196 683 219" />
+          <circle class="wheel" cx="223" cy="235" r="43" />
+          <circle class="wheel" cx="594" cy="235" r="43" />
+          <path class="accent" d="M646 151 L711 170 L657 178" />
+        </svg>
       </div>
     </section>
 
-    <section class="trust-strip">
-      <div><strong>Toyota Hybrid Focused</strong><span>Not a general repair guess</span></div>
-      <div><strong>Advanced Diagnostics</strong><span>Find the real problem first</span></div>
-      <div><strong>Mobile Appointment</strong><span>Service arranged by schedule</span></div>
+    <section class="stats-bar" aria-label="Business trust highlights">
+      <div><strong>5.0</strong><span>Google Rating ★★★★★</span></div>
+      <div><strong>50+</strong><span>Five-Star Reviews</span></div>
+      <div><strong>Toyota & Lexus</strong><span>Hybrid Specialists</span></div>
+      <div><strong>San Diego</strong><span>Trusted Local Service</span></div>
     </section>
 
-    <section id="services" class="section">
+    <section id="reviews" class="reviews-section">
       <div class="section-heading">
-        <p class="eyebrow">What We Do</p>
-        <h2>Hybrid service built around real diagnostics.</h2>
-        <p>We focus on Toyota hybrid systems, high-voltage batteries, electrical faults, ABS modules, and maintenance issues that general shops often misdiagnose.</p>
+        <p class="eyebrow">What Our Customers Say</p>
+        <h2>Trusted by hybrid owners across San Diego.</h2>
+        <p>Real Google reviews from Toyota and Lexus hybrid customers. No customer photos, no fake repair photos—just real words from real people.</p>
+      </div>
+      <div class="review-slider" aria-live="polite">
+        <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
+        <div class="review-track" id="reviewTrack"></div>
+        <button class="review-arrow next" type="button" aria-label="Next review">›</button>
+      </div>
+      <div class="review-dots" id="reviewDots" aria-label="Review navigation"></div>
+      <a class="google-btn" href="https://maps.app.goo.gl/9GqPbpmZYWZC5Z4N7?g_st=ic" target="_blank" rel="noopener">G&nbsp; Read 50+ Five-Star Reviews on Google →</a>
+    </section>
+
+    <section id="why" class="why-section">
+      <div class="section-heading dark-heading">
+        <p class="eyebrow">Why Choose Elite Hybrid Auto?</p>
+        <h2>Specialized hybrid knowledge with honest communication.</h2>
+      </div>
+      <div class="why-grid">
+        <article><span>🔋</span><h3>Hybrid Experts</h3><p>Focused on Toyota and Lexus hybrid vehicles. We know these systems inside and out.</p></article>
+        <article><span>🛡</span><h3>Honest & Transparent</h3><p>Straightforward advice, no guesswork, and no unnecessary upsells.</p></article>
+        <article><span>🔧</span><h3>Dealer-Level Diagnostics</h3><p>Advanced diagnostic process to find the real problem before replacing parts.</p></article>
+        <article><span>⏱</span><h3>Fast Turnaround</h3><p>Get back on the road sooner with efficient service and clear communication.</p></article>
+        <article><span>💵</span><h3>Fair Pricing</h3><p>Quality work at transparent prices without dealership-level pressure.</p></article>
+        <article><span>✅</span><h3>Quality You Can Trust</h3><p>We stand behind our work and treat your hybrid like our own.</p></article>
+      </div>
+    </section>
+
+    <section id="services" class="section services-section">
+      <div class="section-heading">
+        <p class="eyebrow">Our Services</p>
+        <h2>Toyota & Lexus hybrid repair services.</h2>
       </div>
       <div class="service-grid">
-        <article class="service-card"><div class="icon">🔋</div><h3>Hybrid Battery Diagnostics</h3><p>Warning lights, weak modules, state-of-charge issues, and performance concerns diagnosed properly.</p></article>
-        <article class="service-card"><div class="icon">⚡</div><h3>Hybrid Battery Repair</h3><p>Battery service and repair options explained clearly before replacement is considered.</p></article>
-        <article class="service-card"><div class="icon">🧠</div><h3>ABS Module Repair</h3><p>ABS, brake actuator, and module-related faults diagnosed with Toyota hybrid experience.</p></article>
-        <article class="service-card"><div class="icon">🛠️</div><h3>Engine Maintenance</h3><p>Maintenance and drivability service for Toyota hybrid vehicles.</p></article>
-        <article class="service-card"><div class="icon">🔎</div><h3>Electrical Diagnostics</h3><p>Electrical faults, no-start issues, communication errors, and hybrid system warning lights.</p></article>
-        <article class="service-card muted"><div class="icon">🚘</div><h3>Coming Soon</h3><p>California smog inspection, vehicle safety inspection, and registration services.</p></article>
-      </div>
-    </section>
-
-    <section class="split-section">
-      <div>
-        <p class="eyebrow">Why Customers Choose Us</p>
-        <h2>We explain the problem before we sell the repair.</h2>
-        <p>Hybrid repairs can get expensive fast when the diagnosis is wrong. Elite Hybrid Auto is built around clear testing, honest recommendations, and Toyota hybrid experience.</p>
-      </div>
-      <div class="feature-list">
-        <div><strong>Clear Communication</strong><span>You know what failed and why.</span></div>
-        <div><strong>No Guesswork</strong><span>Diagnostics come before parts.</span></div>
-        <div><strong>Real Hybrid Experience</strong><span>Focused on Toyota hybrid platforms.</span></div>
-      </div>
-    </section>
-
-    <section id="reviews" class="section dark-section">
-      <div class="section-heading">
-        <p class="eyebrow">Customer Trust</p>
-        <h2>Real work. Real reviews.</h2>
-        <p>Add your best Google reviews here so visitors see proof before they call.</p>
-      </div>
-      <div class="review-grid">
-        <article class="review-card"><div class="stars">★★★★★</div><p>“Professional, honest, and knowledgeable with Toyota hybrids.”</p><span>Google Customer Review</span></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p>“Diagnosed the issue clearly and saved me from unnecessary repairs.”</p><span>Google Customer Review</span></article>
-        <article class="review-card"><div class="stars">★★★★★</div><p>“Great communication and quality work.”</p><span>Google Customer Review</span></article>
-      </div>
-      <div class="center"><a class="btn secondary" href="https://maps.app.goo.gl/1VxXGhTntuaMw96y8?g_st=ic" target="_blank" rel="noopener">View Google Reviews</a></div>
-    </section>
-
-    <section id="gallery" class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Repair Gallery</p>
-        <h2>Your actual work belongs here.</h2>
-        <p>For now, these are clean placeholders. Next we’ll replace them with your Google photos and iPhone repair photos.</p>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item">Hybrid Battery Service</div>
-        <div class="gallery-item">Toyota Diagnostics</div>
-        <div class="gallery-item">ABS Module Work</div>
-        <div class="gallery-item">Engine Maintenance</div>
+        <article class="service-card"><div class="service-icon">🔋</div><h3>Hybrid Battery Service & Repair</h3><p>Diagnosis, reconditioning, repair, and replacement guidance for Toyota hybrid batteries.</p></article>
+        <article class="service-card"><div class="service-icon">⚙️</div><h3>Engine & Head Gasket Repair</h3><p>Expert repairs for head gaskets, engine issues, and hybrid drivability concerns.</p></article>
+        <article class="service-card"><div class="service-icon">🛑</div><h3>ABS & Brake Systems</h3><p>Diagnostics and repair for ABS, brake actuator, and hybrid brake system faults.</p></article>
+        <article class="service-card"><div class="service-icon">🔎</div><h3>Diagnostics & Electrical</h3><p>Advanced diagnostics for warning lights, no-starts, communication errors, and electrical faults.</p></article>
+        <article class="service-card"><div class="service-icon">🛢</div><h3>General Maintenance</h3><p>Oil changes, tune-ups, fluid service, inspections, and routine hybrid maintenance.</p></article>
+        <article class="service-card"><div class="service-icon">🚗</div><h3>Maintenance & Service</h3><p>Keep your Toyota or Lexus hybrid running reliable, efficient, and ready for daily driving.</p></article>
       </div>
     </section>
 
@@ -108,30 +125,40 @@
       </div>
       <form class="appointment-form" action="https://formsubmit.co/experthybridautomotive@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Elite Hybrid Auto Appointment Request" />
+        <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="name" placeholder="Your name" required />
         <input type="tel" name="phone" placeholder="Phone number" required />
+        <input type="email" name="email" placeholder="Email address" />
         <input type="text" name="vehicle" placeholder="Vehicle year / model" />
         <textarea name="message" placeholder="What issue are you having?" rows="4"></textarea>
         <button class="btn primary" type="submit">Send Request</button>
       </form>
     </section>
 
-    <section id="contact" class="section contact-section">
-      <div class="section-heading">
-        <p class="eyebrow">Contact</p>
+    <section id="contact" class="contact-section">
+      <div class="contact-info">
+        <p class="eyebrow">Contact Us</p>
         <h2>Elite Hybrid Auto</h2>
-        <p>Mobile service by appointment. No shop address currently.</p>
+        <div class="contact-card"><strong>Phone</strong><a href="tel:16197868777">(619) 786-8777</a></div>
+        <div class="contact-card"><strong>Email</strong><a href="mailto:experthybridautomotive@gmail.com">experthybridautomotive@gmail.com</a></div>
+        <div class="contact-card"><strong>Location</strong><span>9518 Jamacha Blvd C<br>Spring Valley, CA 91977</span></div>
+        <div class="contact-card"><strong>Hours</strong><span>Mon–Fri: 8:00 AM–5:30 PM<br>Saturday: 8:00 AM–3:00 PM<br>Sunday: Closed</span></div>
+        <div class="contact-actions">
+          <a class="btn primary" href="https://maps.app.goo.gl/9GqPbpmZYWZC5Z4N7?g_st=ic" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn secondary" href="tel:16197868777">Call Now</a>
+        </div>
       </div>
-      <div class="contact-grid">
-        <a href="tel:16197868777"><strong>Phone</strong><span>(619) 786-8777</span></a>
-        <a href="mailto:experthybridautomotive@gmail.com"><strong>Email</strong><span>experthybridautomotive@gmail.com</span></a>
-        <div><strong>Hours</strong><span>Mon–Fri: 9:30 AM–6:00 PM<br>Sat: 9:30 AM–1:30 PM<br>Sun: Closed</span></div>
+      <div class="map-box">
+        <iframe title="Elite Hybrid Auto Google Map" src="https://www.google.com/maps?q=9518%20Jamacha%20Blvd%20C%20Spring%20Valley%20CA%2091977&output=embed" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Elite Hybrid Auto. Toyota Hybrid Specialists.</p>
+    <div class="footer-logo">ELITE <span>HYBRID AUTO</span></div>
+    <p>© 2026 Elite Hybrid Auto. Toyota & Lexus Hybrid Specialists.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
