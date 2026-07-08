@@ -1,15 +1,19 @@
-# Expert Hybrid Auto Website
+# Expert Hybrid Automotive Website
 
-GitHub/Netlify-ready website files.
+GitHub/Netlify-ready static website.
 
-Included updates:
-- Premium blue styling
-- Storefront photo placeholder using `assets/shop-front.jpg`
-- Dedicated Financing Available section
-- ASE Certified trust points
-- Text-only Google review slider with no customer photos
-- No fake repair photos
-- General Maintenance included
-- Interactive Google Map
+## Files
+- `index.html` — website structure
+- `styles.css` — blue premium styling
+- `script.js` — mobile menu and review carousel
+- `assets/storefront.jpg` — optional storefront photo
 
-Upload `index.html`, `styles.css`, `script.js`, and this README to your GitHub repo. When you have your shop front photo, create an `assets` folder and upload it as `shop-front.jpg`.
+## How to add your real storefront photo
+1. Rename your shop photo to `storefront.jpg`.
+2. Place it inside the `assets` folder.
+3. Re-upload/commit the file to GitHub.
+
+The homepage hero will automatically use that image.
+
+## Deploy on Netlify
+Connect your GitHub repository to Netlify. No build command needed. Publish directory can stay blank or `/`.
