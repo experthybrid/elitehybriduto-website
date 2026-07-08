@@ -1,23 +1,22 @@
-# Elite Hybrid Auto Website
+# Expert Hybrid Auto Website
 
-Static website ready for GitHub + Netlify.
+GitHub/Netlify-ready static website.
 
 ## Files
 - `index.html`
 - `styles.css`
 - `script.js`
+- `assets/`
+
+## Storefront photo
+When you have the front-of-shop photo, rename it to:
+
+`shop-front.jpg`
+
+Then place it inside the `assets` folder. The hero section will automatically use it.
 
 ## Upload to GitHub
-1. Create a new GitHub repository.
-2. Upload these three files to the repository root.
-3. Connect the repository to Netlify.
-4. Netlify build settings:
-   - Build command: leave blank
-   - Publish directory: `/` or leave blank depending on Netlify UI
+Upload all files into the root of your GitHub repository. Do not upload only the ZIP.
 
-## Notes
-- Review slider uses the reviews provided in chat.
-- Customer photos were intentionally removed.
-- Repair/work photos were intentionally removed.
-- Pre-purchase service was replaced with General Maintenance.
-- Google Map uses 9518 Jamacha Blvd C, Spring Valley, CA 91977.
+## Deploy on Netlify
+Connect the GitHub repository to Netlify. No build command is needed. Publish directory should be blank or `/`.
