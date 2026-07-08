@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Expert Hybrid Auto | Toyota & Lexus Hybrid Specialists</title>
-  <meta name="description" content="Expert Hybrid Auto specializes in Toyota and Lexus hybrid diagnostics, hybrid battery service, ABS/brake systems, engine/head gasket repair, and general maintenance in San Diego." />
+  <meta name="description" content="Expert Hybrid Auto specializes in Toyota and Lexus hybrid diagnostics, hybrid battery service, ABS/brake systems, engine/head gasket repair, electrical diagnostics, financing options, and general maintenance in Spring Valley / San Diego." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,12 +16,12 @@
       <span class="logo-mark">⚡</span>
       <span class="logo-text"><strong>EXPERT</strong><em>HYBRID AUTOMOTIVE</em><small>TOYOTA & LEXUS HYBRID SPECIALISTS</small></span>
     </a>
-    <button class="menu-toggle" aria-label="Open menu">☰</button>
-    <nav class="site-nav">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="site-nav" id="siteNav">
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#why">Why Choose Us?</a>
       <a href="#reviews">Reviews</a>
+      <a href="#why">Why Choose Us?</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="header-call" href="tel:16197868777">☎ (619) 786-8777</a>
@@ -31,8 +31,8 @@
     <section id="home" class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Toyota & Lexus Hybrid Specialists</p>
-        <h1>Hybrid repairs done right the first time.</h1>
-        <p class="hero-subtitle">Dealer-level diagnostics, honest repairs, fair pricing, and Toyota hybrid experience trusted by San Diego drivers.</p>
+        <h1>Toyota & Lexus Hybrid Specialists You Can Trust.</h1>
+        <p class="hero-subtitle">Dealer-level diagnostics, honest repairs, fair pricing, and advanced hybrid expertise trusted by Toyota & Lexus owners throughout San Diego.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#appointment">Schedule Appointment</a>
           <a class="btn secondary" href="tel:16197868777">Call Now</a>
@@ -40,48 +40,39 @@
         <div class="mini-trust">
           <span>🔎 Expert Diagnostics</span>
           <span>🛡 Honest & Transparent</span>
-          <span>⏱ Fast Turnaround</span>
-          <span>✅ Quality You Can Trust</span>
+          <span>💳 Financing Available</span>
+          <span>✅ ASE Certified</span>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 760 360" role="img">
-          <defs>
-            <linearGradient id="carGlow" x1="0" x2="1">
-              <stop stop-color="#8ec5ff"/>
-              <stop offset="1" stop-color="#0b6dff"/>
-            </linearGradient>
-          </defs>
-          <path class="car-shadow" d="M101 265 C180 310 560 310 670 266" />
-          <path class="car-line main" d="M68 230 C102 182 165 144 254 126 C328 70 494 78 600 137 C657 148 700 177 725 221" />
-          <path class="car-line" d="M251 127 C319 126 433 126 575 137" />
-          <path class="car-line" d="M320 124 C353 93 445 92 505 124" />
-          <path class="car-line" d="M133 222 C190 207 255 202 323 205" />
-          <path class="car-line" d="M500 204 C553 193 616 196 683 219" />
-          <circle class="wheel" cx="223" cy="235" r="43" />
-          <circle class="wheel" cx="594" cy="235" r="43" />
-          <path class="accent" d="M646 151 L711 170 L657 178" />
-        </svg>
+
+      <div class="hero-visual">
+        <div class="shop-photo-card" role="img" aria-label="Expert Hybrid Auto storefront photo placeholder">
+          <div class="shop-photo-overlay">
+            <p>Spring Valley Location</p>
+            <strong>Expert Hybrid Auto</strong>
+            <span>Replace with your real storefront photo: <b>assets/shop-front.jpg</b></span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="stats-bar" aria-label="Business trust highlights">
       <div><strong>5.0</strong><span>Google Rating ★★★★★</span></div>
       <div><strong>50+</strong><span>Five-Star Reviews</span></div>
-      <div><strong>Toyota & Lexus</strong><span>Hybrid Specialists</span></div>
-      <div><strong>San Diego</strong><span>Trusted Local Service</span></div>
+      <div><strong>ASE</strong><span>Certified Technicians</span></div>
+      <div><strong>Financing</strong><span>Available</span></div>
     </section>
 
     <section id="reviews" class="reviews-section">
       <div class="section-heading">
-        <p class="eyebrow">What Our Customers Say</p>
+        <p class="eyebrow">Google Reviews</p>
         <h2>Trusted by hybrid owners across San Diego.</h2>
-        <p>Real Google reviews from Toyota and Lexus hybrid customers. No customer photos, no fake repair photos—just real words from real people.</p>
+        <p>Real customer reviews, clean text-only cards, and no customer photos.</p>
       </div>
       <div class="review-slider" aria-live="polite">
-        <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
+        <button class="review-arrow prev" id="prevReview" type="button" aria-label="Previous review">‹</button>
         <div class="review-track" id="reviewTrack"></div>
-        <button class="review-arrow next" type="button" aria-label="Next review">›</button>
+        <button class="review-arrow next" id="nextReview" type="button" aria-label="Next review">›</button>
       </div>
       <div class="review-dots" id="reviewDots" aria-label="Review navigation"></div>
       <a class="google-btn" href="https://maps.app.goo.gl/9GqPbpmZYWZC5Z4N7?g_st=ic" target="_blank" rel="noopener">G&nbsp; Read 50+ Five-Star Reviews on Google →</a>
@@ -90,14 +81,15 @@
     <section id="why" class="why-section">
       <div class="section-heading dark-heading">
         <p class="eyebrow">Why Choose Expert Hybrid Auto?</p>
-        <h2>Specialized hybrid knowledge with honest communication.</h2>
+        <h2>The Elite Difference.</h2>
+        <p>Specialized hybrid knowledge, honest communication, and repair options designed around the customer.</p>
       </div>
       <div class="why-grid">
         <article><span>🔋</span><h3>Hybrid Experts</h3><p>Focused on Toyota and Lexus hybrid vehicles. We know these systems inside and out.</p></article>
         <article><span>🛡</span><h3>Honest & Transparent</h3><p>Straightforward advice, no guesswork, and no unnecessary upsells.</p></article>
         <article><span>🔧</span><h3>Dealer-Level Diagnostics</h3><p>Advanced diagnostic process to find the real problem before replacing parts.</p></article>
-        <article><span>⏱</span><h3>Fast Turnaround</h3><p>Get back on the road sooner with efficient service and clear communication.</p></article>
-        <article><span>💵</span><h3>Fair Pricing</h3><p>Quality work at transparent prices without dealership-level pressure.</p></article>
+        <article><span>💳</span><h3>Flexible Financing</h3><p>Need major repairs? Financing options are available to help you get back on the road.</p></article>
+        <article><span>🏅</span><h3>ASE Certified</h3><p>Industry-certified technicians committed to accurate diagnostics and quality workmanship.</p></article>
         <article><span>✅</span><h3>Quality You Can Trust</h3><p>We stand behind our work and treat your hybrid like our own.</p></article>
       </div>
     </section>
@@ -110,11 +102,24 @@
       <div class="service-grid">
         <article class="service-card"><div class="service-icon">🔋</div><h3>Hybrid Battery Service & Repair</h3><p>Hybrid batteries are more than just parts—they're complex electrical systems. We use advanced diagnostic equipment and years of hands-on experience to evaluate battery health, identify failing components, and perform reliable repairs.</p></article>
         <article class="service-card"><div class="service-icon">⚙️</div><h3>Engine & Head Gasket Repair</h3><p>From routine maintenance and oil changes to tune-ups, diagnostics, repairs, and complete engine overhauls, we provide comprehensive engine services to keep your vehicle performing at its best.</p></article>
-        <article class="service-card"><div class="service-icon">🛑</div><h3>ABS & Brake Systems</h3><p>Specialists in Toyota and Lexus ABS, brake boosters, actuators, and electronic brake control systems. We provide accurate diagnostics and reliable repairs to restore safe, confident braking performance.</p></article>
+        <article class="service-card"><div class="service-icon">🛑</div><h3>ABS & Electronic Brake Systems</h3><p>Specialists in Toyota and Lexus ABS, brake boosters, actuators, and electronic brake control systems. We provide accurate diagnostics and reliable repairs to restore safe, confident braking performance.</p></article>
         <article class="service-card"><div class="service-icon">🔎</div><h3>Diagnostics & Electrical</h3><p>Modern vehicles require more than guesswork. Our professional diagnostic equipment allows us to accurately identify electrical and communication system faults, ensuring precise repairs the first time.</p></article>
-        <article class="service-card"><div class="service-icon">🛢</div><h3>General Maintenance</h3><p>Oil changes, tune-ups, fluid service, HV fan service , and routine hybrid maintenance.</p></article>
-        <article class="service-card"><div class="service-icon">🚗</div><h3>Only Hybrids?</h3><p>Although we specialize in Toyota and Lexus hybrids, we provide quality maintenance services for all makes and models to keep your vehicle performing at its best.</p></article>
-        
+        <article class="service-card"><div class="service-icon">🛢</div><h3>General Maintenance</h3><p>Oil changes, tune-ups, fluid services, hybrid cooling fan cleaning, brake service, and factory scheduled maintenance to keep your vehicle running at its best.</p></article>
+        <article class="service-card"><div class="service-icon">🚗</div><h3>All Makes & Models Welcome</h3><p>Although we specialize in Toyota and Lexus hybrids, we proudly provide routine maintenance and scheduled services for all makes and models.</p></article>
+      </div>
+    </section>
+
+    <section class="visit-section">
+      <div class="visit-card">
+        <p class="eyebrow">Before You Visit</p>
+        <h2>We make hybrid service easier.</h2>
+        <div class="visit-list">
+          <span>📞 Call us if you're unsure what's wrong.</span>
+          <span>🔋 Toyota & Lexus hybrids are our specialty.</span>
+          <span>💳 Financing available for qualified customers.</span>
+          <span>🚗 All makes & models welcome for routine maintenance.</span>
+          <span>📅 Appointments recommended.</span>
+        </div>
       </div>
     </section>
 
@@ -144,6 +149,7 @@
         <div class="contact-card"><strong>Email</strong><a href="mailto:experthybridautomotive@gmail.com">experthybridautomotive@gmail.com</a></div>
         <div class="contact-card"><strong>Location</strong><span>9518 Jamacha Blvd C<br>Spring Valley, CA 91977</span></div>
         <div class="contact-card"><strong>Hours</strong><span>Mon–Fri: 8:00 AM–5:30 PM<br>Saturday: 8:00 AM–3:00 PM<br>Sunday: Closed</span></div>
+        <div class="contact-card"><strong>Trust</strong><span>ASE Certified • Financing Available<br>5.0 Google Rating</span></div>
         <div class="contact-actions">
           <a class="btn primary" href="https://maps.app.goo.gl/9GqPbpmZYWZC5Z4N7?g_st=ic" target="_blank" rel="noopener">Get Directions</a>
           <a class="btn secondary" href="tel:16197868777">Call Now</a>
@@ -157,7 +163,8 @@
 
   <footer>
     <div class="footer-logo">EXPERT <span>HYBRID AUTO</span></div>
-    <p>© 2026 EXPERT Hybrid Automotive. Toyota & Lexus Hybrid Specialists.</p>
+    <p>ASE Certified • Toyota & Lexus Hybrid Specialists • Rated 5.0 on Google</p>
+    <p>© 2026 Expert Hybrid Automotive. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
