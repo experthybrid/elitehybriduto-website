@@ -1,18 +1,14 @@
 # Expert Hybrid Auto Website
 
-GitHub/Netlify-ready static website.
+Static GitHub/Netlify-ready website.
 
-## Files
-- `index.html`
-- `styles.css`
-- `script.js`
-- `assets/storefront.jpg`
+Files:
+- index.html
+- styles.css
+- script.js
+- assets/storefront.png
 
-## Upload to GitHub
-Upload all files and the `assets` folder to the root of your repository.
-
-## Deploy on Netlify
-Import the GitHub repository. No build command is required. Publish directory should be blank or `/`.
-
-## Storefront Photo
-The current hero uses `assets/storefront.jpg`. Replace that file with a newer storefront image using the same filename if desired.
+Important:
+- The storefront image is already integrated as the hero background using `assets/storefront.png`.
+- Upload these extracted files to GitHub, not the ZIP itself.
+- Netlify will automatically deploy when connected to GitHub.

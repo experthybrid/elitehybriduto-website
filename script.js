@@ -1,70 +1,49 @@
 const reviews = [
-  {name:'Dee Shrestha', age:'2 years ago', text:'This place is a Godsend for all hybrid owners! Mohammed is extremely knowledgeable, honest and upfront from Day 1. My vehicle was ready in 3 business days. These guys are amazing!'},
-  {name:'Timothy H', age:'3 years ago', text:'The absolute BEST for Prius hybrid cars! They communicated well, diagnosed the problem and changed the head gasket in my Prius V. Great prices and friendly service. Highly recommended!'},
-  {name:'Alfred Ramirez', age:'4 years ago', text:'From the initial phone call I knew the owner understood the Prius. Very polite, fast, quality work and the price was exactly as quoted. My Prius is running great!'},
-  {name:'Allan Fisher', age:'3 years ago', text:'Mo and his technician were able to diagnose the issue and pinpoint the problem. They fixed it and it was ready the same day. Trustworthy, reliable and affordable.'},
-  {name:'Phelps Rivera', age:'3 years ago', text:'These mechanics are the best in San Diego. I wish I had called them before another mechanic and the dealership. Amazing prices, professional work and very gracious.'},
-  {name:'Kyle Nguyen', age:'a year ago', text:'The shop is very knowledgeable on hybrid cars. Mohamed is honest and straight up about the service that needed to be done. I couldn’t be any happier.'},
-  {name:'RegalRandy', age:'2 years ago', text:'10/10. The best Prius mechanics in the City of San Diego. Friendly, fast and honest. They do not guess or upsell. They stand behind their work.'},
-  {name:'Justin Estrada', age:'2 years ago', text:'Helped me over the phone at first with great advice. Brought my Prius in and they took great care of it. Friendly, timely and great price. I will be back.'},
-  {name:'Tracy Lewin', age:'5 years ago', text:'Mo and his team were able to replace my whole engine for less than half of what Toyota quoted. Incredibly knowledgeable with Toyotas and Prius vehicles. Highly recommend!'}
+  {name:'Dee Shrestha', time:'2 years ago', text:'This place is a Godsend for all hybrid owners! Mohammed is extremely knowledgeable, honest and upfront from Day 1. My vehicle was ready in 3 business days. These guys are amazing!'},
+  {name:'Timothy H', time:'3 years ago', text:'The absolute BEST for Prius hybrid cars! They communicated well, diagnosed the problem and changed the head gasket in my Prius V. Great prices and friendly service. Highly recommended!'},
+  {name:'Alfred Ramirez', time:'4 years ago', text:'From the initial phone call, I knew the owner understood the Prius. They were polite, fast, and delivered quality work exactly as quoted. My Prius is running great!'},
+  {name:'Allan Fisher', time:'3 years ago', text:'Mo and his technician quickly diagnosed the issue on my Prius and had it repaired the same day. Trustworthy, reliable, affordable, and I will definitely be back.'},
+  {name:'Phelps Rivera', time:'3 years ago', text:'The best mechanics in San Diego. I wish I had called them before going to another mechanic and the dealership. Amazing prices, professional work, and exceptional customer service.'},
+  {name:'Kyle Nguyen', time:'a year ago', text:'Very knowledgeable on hybrid cars. Mohamed was honest and straightforward about the repairs my Prius needed. I could not be any happier with the results.'},
+  {name:'Ramon O.', time:'2 years ago', text:'10/10. The best Prius mechanics in San Diego. Friendly, fast, and honest. They do not guess or upsell. They stand behind their work and get you back on the road.'},
+  {name:'Justin Estrada', time:'2 years ago', text:'They helped me over the phone with great advice before I even brought my Prius in. Friendly, timely, fairly priced, and they took great care of my car. I will be back.'},
+  {name:'Tracy Lewin', time:'5 years ago', text:'I am grateful I found this team. Toyota quoted me over $5k, and they provided a better repair solution for less. Knowledgeable, trustworthy, and highly recommended.'}
 ];
 
 const track = document.getElementById('reviewTrack');
 const dots = document.getElementById('reviewDots');
-const prev = document.getElementById('prevReview');
-const next = document.getElementById('nextReview');
-let current = 0;
-let perView = window.innerWidth <= 680 ? 1 : (window.innerWidth <= 1050 ? 2 : 3);
+let index = 0;
 
-function buildReviews(){
-  track.innerHTML = reviews.map(r => `
-    <article class="review-card">
-      <div class="review-head"><div class="stars">★★★★★</div><div class="google-mark">G</div></div>
-      <p>“${r.text}”</p>
-      <strong>— ${r.name}</strong>
-      <small>${r.age} • Verified Google Review</small>
-    </article>
-  `).join('');
-  const maxIndex = Math.max(0, reviews.length - perView);
-  dots.innerHTML = Array.from({length:maxIndex+1}, (_,i)=>`<button aria-label="Go to review ${i+1}" data-index="${i}"></button>`).join('');
-  [...dots.querySelectorAll('button')].forEach(btn => btn.addEventListener('click',()=>goTo(Number(btn.dataset.index))));
-  updateSlider();
+function cardTemplate(r){
+  return `<article class="review-card"><div class="stars">★★★★★</div><blockquote>“${r.text}”</blockquote><strong>— ${r.name}</strong><small>${r.time} · Google Review</small></article>`;
 }
 
-function updatePerView(){
-  perView = window.innerWidth <= 680 ? 1 : (window.innerWidth <= 1050 ? 2 : 3);
-  current = Math.min(current, Math.max(0, reviews.length - perView));
+function initReviews(){
+  if(!track) return;
+  track.innerHTML = reviews.map(cardTemplate).join('');
+  dots.innerHTML = reviews.map((_,i)=>`<button aria-label="Go to review ${i+1}" data-dot="${i}"></button>`).join('');
+  dots.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>goTo(Number(btn.dataset.dot))));
+  document.querySelector('.review-arrow.prev')?.addEventListener('click',()=>goTo(index-1));
+  document.querySelector('.review-arrow.next')?.addEventListener('click',()=>goTo(index+1));
+  update();
+  setInterval(()=>goTo(index+1), 6500);
 }
-function updateSlider(){
-  updatePerView();
-  const card = track.querySelector('.review-card');
-  if(!card) return;
-  const gap = 18;
-  const cardWidth = card.getBoundingClientRect().width + gap;
-  track.style.transform = `translateX(${-current * cardWidth}px)`;
-  dots.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active', i===current));
-}
-function goTo(index){
-  current = Math.max(0, Math.min(index, reviews.length - perView));
-  updateSlider();
-}
-function goNext(){ goTo(current >= reviews.length - perView ? 0 : current + 1); }
-function goPrev(){ goTo(current <= 0 ? reviews.length - perView : current - 1); }
 
-prev?.addEventListener('click', goPrev);
-next?.addEventListener('click', goNext);
-window.addEventListener('resize', () => { buildReviews(); });
-let timer = setInterval(goNext, 5500);
-document.querySelector('.review-shell')?.addEventListener('mouseenter',()=>clearInterval(timer));
-document.querySelector('.review-shell')?.addEventListener('mouseleave',()=>timer=setInterval(goNext,5500));
+function visibleCount(){ return window.innerWidth < 900 ? 1 : 3; }
+function goTo(i){ index = (i + reviews.length) % reviews.length; update(); }
+function update(){
+  const cards = track.querySelectorAll('.review-card');
+  if(!cards.length) return;
+  const cardWidth = cards[0].getBoundingClientRect().width + 20;
+  const maxIndex = Math.max(0, reviews.length - visibleCount());
+  const adjusted = Math.min(index, maxIndex);
+  track.style.transform = `translateX(${-adjusted * cardWidth}px)`;
+  dots.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active', i === index));
+}
+window.addEventListener('resize', update);
+initReviews();
 
-const menuToggle = document.getElementById('menuToggle');
-const siteNav = document.getElementById('siteNav');
-menuToggle?.addEventListener('click',()=>{
-  const open = siteNav.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+document.querySelector('.menu-toggle')?.addEventListener('click',()=>{
+  document.getElementById('siteNav')?.classList.toggle('open');
 });
-siteNav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>siteNav.classList.remove('open')));
-
-buildReviews();
+document.querySelectorAll('.site-nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('siteNav')?.classList.remove('open')));
