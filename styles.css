@@ -81,7 +81,7 @@ a { color: inherit; text-decoration: none; }
 .stats-bar strong { display:block; font-size:1.6rem; }
 .stats-bar span { display:block; color:#c8d7e8; text-transform:uppercase; font-size:.76rem; font-weight:800; margin-top:4px; }
 
-.section, .reviews-section, .why-section, .appointment-section, .contact-section, .visit-section { padding:72px 5%; }
+.section, .reviews-section, .why-section, .appointment-section, .contact-section, .visit-section, .financing-section { padding:72px 5%; }
 .section-heading { text-align:center; max-width:850px; margin:0 auto 34px; }
 .section-heading h2, .visit-card h2, .appointment-section h2, .contact-info h2 { font-size:clamp(2rem,3.2vw,3.35rem); line-height:1; margin:8px 0 12px; }
 .section-heading p:not(.eyebrow) { color:var(--muted); line-height:1.55; }
@@ -143,7 +143,7 @@ footer { padding:28px 5%; background:#001226; color:white; text-align:center; }
 footer p { color:#c7d8ec; margin:8px 0 0; }
 
 @media (max-width: 1050px) {
-  .hero, .appointment-section, .contact-section { grid-template-columns:1fr; }
+  .hero, .appointment-section, .contact-section, .financing-card { grid-template-columns:1fr; }
   .hero-visual { order:-1; }
   .shop-photo-card { min-height:330px; }
   .site-nav { display:none; position:absolute; top:100%; left:0; right:0; background:#001226; padding:18px 5%; flex-direction:column; }
@@ -152,7 +152,7 @@ footer p { color:#c7d8ec; margin:8px 0 0; }
   .header-call { display:none; }
   .review-track { grid-auto-columns:calc((100% - 24px)/2); }
   .why-grid, .service-grid { grid-template-columns:repeat(2,1fr); }
-  .visit-list { grid-template-columns:repeat(2,1fr); }
+  .visit-list, .financing-points { grid-template-columns:repeat(2,1fr); }
   .contact-info, .map-box { border-radius:34px; }
   .map-box { border-left:1px solid var(--line); margin-top:18px; }
 }
@@ -164,7 +164,7 @@ footer p { color:#c7d8ec; margin:8px 0 0; }
   .logo-text small { display:none; }
   .hero { padding:42px 5%; min-height:auto; }
   .hero h1 { font-size:2.75rem; }
-  .mini-trust, .stats-bar, .why-grid, .service-grid, .visit-list, .appointment-form { grid-template-columns:1fr; }
+  .mini-trust, .stats-bar, .why-grid, .service-grid, .visit-list, .appointment-form, .financing-points { grid-template-columns:1fr; }
   .stats-bar { gap:18px; }
   .stats-bar div { border-right:0; padding:0; }
   .review-track { grid-auto-columns:100%; }
