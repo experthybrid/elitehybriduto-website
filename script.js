@@ -1,62 +1,90 @@
 const reviews = [
-  {name:'Dee Shrestha', date:'5 years ago', text:'This place is a Godsend for all hybrid owners! Mohammed is extremely knowledgeable, honest and upfront from Day 1. My vehicle was ready in 3 business days. These guys are amazing!'},
-  {name:'Timothy H', date:'3 years ago', text:'The absolute BEST for Prius hybrid cars! They communicated well, diagnosed the problem, and changed the head gasket in my Prius V. Great prices and friendly service. Highly recommended!'},
-  {name:'Alfred Ramirez', date:'4 years ago', text:'From the initial phone call, I knew the owner understood the Prius. Very polite, fast, quality work, and the price was exactly as quoted. My Prius is running great!'},
-  {name:'Allan Fisher', date:'3 years ago', text:'Mo and his technician were able to diagnose the issue and pinpoint the problem. They fixed it and it was ready the same day. Trustworthy, reliable, and affordable. I will definitely be back!'},
-  {name:'Phelps Rivera', date:'3 years ago', text:'These mechanics are the best in San Diego. I wish I had called them before another mechanic and the dealership. Amazing prices, professional work, and very gracious customer service.'},
-  {name:'Kyle Nguyen', date:'a year ago', text:'Very knowledgeable on hybrid cars. Mohamed is honest and straight up about the service that needed to be done. Took my Prius there and got it repaired. I couldn’t be any happier.'},
-  {name:'Ramon O.', date:'2 years ago', text:'10/10. The best Prius mechanics in San Diego. Friendly, fast, and honest. They do not guess or upsell. They stand behind their work and get you back on the road.'},
-  {name:'Justin Estrada', date:'2 years ago', text:'They helped me over the phone with great advice before I brought my Prius in. Friendly, timely, great price, and they took great care of it. I will be back for future work.'},
-  {name:'Tracy Lewin', date:'5 years ago', text:'I am grateful I found Mo and his team at auto repair. They replaced my engine for less than half of what Toyota quoted, checked in during the repair, and followed up after. Highly recommend!'}
+  { name: 'Dee Shrestha', date: '5 years ago', text: 'This place is a Godsend for all hybrid owners! Mohammed is extremely knowledgeable, honest and upfront from Day 1. My vehicle was ready in 3 business days. These guys are amazing!' },
+  { name: 'Timothy H', date: '3 years ago', text: 'The absolute BEST for Prius hybrid cars! They communicated well, diagnosed the problem and changed the head gasket in my Prius V. Great prices and friendly service. Highly recommended!' },
+  { name: 'Alfred Ramirez', date: '4 years ago', text: 'From the initial phone call, I knew the owner understood the Prius. Very polite, fast, quality work and the price was exactly as quoted. My Prius is running great!' },
+  { name: 'Allan Fisher', date: '3 years ago', text: 'Mo and his technician quickly diagnosed the issue on my Prius and had it repaired the same day. Trustworthy, reliable, affordable, and I will definitely be coming back for future work.' },
+  { name: 'Phelps Rivera', date: '3 years ago', text: 'The best mechanics in San Diego. I wish I had called them before going to another mechanic and the dealership. Amazing prices, professional work, and exceptional customer service.' },
+  { name: 'Kyle Nguyen', date: 'a year ago', text: 'Very knowledgeable on hybrid cars. Mohamed was honest and straightforward about the repairs my Prius needed. I could not be happier with the results.' },
+  { name: 'Ramon O.', date: '2 years ago', text: '10/10. The best Prius mechanics in San Diego. Friendly, fast, and honest. They do not guess or upsell—they diagnose correctly, stand behind their work, and get you back on the road.' },
+  { name: 'Justin Estrada', date: '2 years ago', text: 'They helped me over the phone with great advice before I even brought my Prius in. Friendly, timely, fairly priced, and they took great care of my car. I will definitely be back.' },
+  { name: 'Tracy Lewin', date: '5 years ago', text: 'Toyota wanted to charge me over $5k, but Mo and his team were able to replace my whole engine for less than half. Incredibly knowledgeable with Toyotas and Priuses. Highly recommend!' }
 ];
 
-let current = 0;
 const track = document.getElementById('reviewTrack');
 const dots = document.getElementById('reviewDots');
-const prev = document.querySelector('.review-arrow.prev');
-const next = document.querySelector('.review-arrow.next');
-const nav = document.querySelector('.site-nav');
-const menu = document.querySelector('.menu-toggle');
+let index = 0;
+let timer;
 
-function cardsPerView(){
-  if (window.innerWidth < 760) return 1;
-  if (window.innerWidth < 1100) return 2;
+function visibleCards() {
+  if (window.innerWidth <= 700) return 1;
+  if (window.innerWidth <= 1050) return 2;
   return 3;
 }
-function renderReviews(){
-  const count = cardsPerView();
-  track.style.opacity = '0';
-  setTimeout(() => {
-    track.innerHTML = '';
-    for (let i = 0; i < count; i++) {
-      const review = reviews[(current + i) % reviews.length];
-      const card = document.createElement('article');
-      card.className = 'review-card';
-      card.innerHTML = `
-        <div style="display:flex;align-items:center;gap:8px"><div class="review-stars">★★★★★</div><div class="google-corner">G</div></div>
-        <p>“${review.text}”</p>
-        <strong>— ${review.name}</strong>
-        <small>${review.date}</small>
-        <div class="verified">Verified Google Review</div>
-      `;
-      track.appendChild(card);
-    }
-    dots.innerHTML = '';
-    reviews.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'review-dot' + (i === current ? ' active' : '');
-      dot.setAttribute('aria-label', `Show review ${i + 1}`);
-      dot.addEventListener('click', () => { current = i; renderReviews(); resetTimer(); });
-      dots.appendChild(dot);
-    });
-    track.style.opacity = '1';
-  }, 140);
+
+function buildReviews() {
+  reviews.forEach((review, i) => {
+    const card = document.createElement('article');
+    card.className = 'review-card';
+    card.innerHTML = `
+      <div class="review-head">
+        <div class="stars">★★★★★</div>
+        <div class="google-mark">G</div>
+      </div>
+      <p>“${review.text}”</p>
+      <cite>— ${review.name}</cite>
+      <small>${review.date} · Verified Google Review</small>
+    `;
+    track.appendChild(card);
+
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Go to review ${i + 1}`);
+    dot.addEventListener('click', () => goToReview(i));
+    dots.appendChild(dot);
+  });
+  updateDots();
 }
-function moveReview(step){ current = (current + step + reviews.length) % reviews.length; renderReviews(); }
-function resetTimer(){ clearInterval(timer); timer = setInterval(() => moveReview(1), 6500); }
-prev.addEventListener('click', () => { moveReview(-1); resetTimer(); });
-next.addEventListener('click', () => { moveReview(1); resetTimer(); });
-window.addEventListener('resize', renderReviews);
-menu.addEventListener('click', () => nav.classList.toggle('open'));
-let timer = setInterval(() => moveReview(1), 6500);
-renderReviews();
+
+function goToReview(i) {
+  const max = Math.max(0, reviews.length - visibleCards());
+  index = Math.max(0, Math.min(i, max));
+  const card = track.querySelector('.review-card');
+  if (!card) return;
+  const gap = 24;
+  track.scrollTo({ left: index * (card.offsetWidth + gap), behavior: 'smooth' });
+  updateDots();
+  restartAutoSlide();
+}
+
+function updateDots() {
+  [...dots.children].forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+
+function nextReview() {
+  const max = Math.max(0, reviews.length - visibleCards());
+  goToReview(index >= max ? 0 : index + 1);
+}
+
+function prevReview() {
+  const max = Math.max(0, reviews.length - visibleCards());
+  goToReview(index <= 0 ? max : index - 1);
+}
+
+function restartAutoSlide() {
+  clearInterval(timer);
+  timer = setInterval(nextReview, 6500);
+}
+
+document.getElementById('nextReview').addEventListener('click', nextReview);
+document.getElementById('prevReview').addEventListener('click', prevReview);
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('siteNav').classList.toggle('open');
+});
+
+document.querySelectorAll('.site-nav a').forEach((link) => {
+  link.addEventListener('click', () => document.getElementById('siteNav').classList.remove('open'));
+});
+
+buildReviews();
+restartAutoSlide();
+window.addEventListener('resize', () => goToReview(index));
